@@ -40,3 +40,6 @@ Ankh.NoLoad
 
 # Office Temp Files
 ~$*
+
+# exclude android manifest 
+!AndroidManifest.xml
