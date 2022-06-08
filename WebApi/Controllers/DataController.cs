@@ -20,7 +20,7 @@ namespace WebApi.Controllers
 
         [HttpPost("{userId}/{dateTime}/{categoryId}/" +
             "{currencyId}/{summ}/{comment}")]
-        public string InsertData(int userId, string dateTime, int categoryId,
+        public async Task<ActionResult<string>> InsertData(int userId, string dateTime, int categoryId,
                                 int currencyId, decimal summ, string comment)
         {
             db.Data.Add(new DataModel
@@ -32,13 +32,13 @@ namespace WebApi.Controllers
                 Summ = summ,
                 Comment = comment
             });
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return "Succesfully added";
         }
 
         [HttpPost("{userId}/{dateTime}/{categoryId}/{subCategoryId}/" +
             "{currencyId}/{summ}/{comment}")]
-        public string InsertData(int userId, string dateTime, int categoryId, int subCategoryId,
+        public async Task<ActionResult<string>> InsertData(int userId, string dateTime, int categoryId, int subCategoryId,
                                 int currencyId, decimal summ, string comment)
         {
             db.Data.Add(new DataModel
@@ -51,13 +51,13 @@ namespace WebApi.Controllers
                 Summ = summ,
                 Comment = comment
             }) ;
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return "Succesfully added";
         }
 
         [HttpPut("{id}/{dateTime}/{categoryId}/" +
             "{currencyId}/{summ}/{comment}")]
-        public string UpdateData(int id, DateTime dateTime, int categoryId,
+        public async Task<ActionResult<string>> UpdateData(int id, DateTime dateTime, int categoryId,
                                 int currencyId, decimal summ, string comment)
         {
             var info = db.Data.FirstOrDefault(i => i.Id == id);
@@ -72,13 +72,13 @@ namespace WebApi.Controllers
             info.CurrencyId = currencyId;
 
             db.Update(info);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return "Update succesful";
         }
 
         [HttpPut("{id}/{dateTime}/{categoryId}/{subCategoryId}/" +
             "{currencyId}/{summ}/{comment}")]
-        public string UpdateData(int id, DateTime dateTime, int categoryId, int subCategoryId,
+        public async Task<ActionResult<string>> UpdateData(int id, DateTime dateTime, int categoryId, int subCategoryId,
                                 int currencyId, decimal summ, string comment)
         {
             var info = db.Data.FirstOrDefault(i => i.Id == id);
@@ -94,12 +94,12 @@ namespace WebApi.Controllers
             info.CurrencyId = currencyId;
 
             db.Update(info);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return "Update succesful";
         }
 
         [HttpDelete("{id}")]
-        public string DeleteData(int id)
+        public async Task<ActionResult<string>> DeleteData(int id)
         {
             var info = db.Data.FirstOrDefault(i => i.Id == id);
 
@@ -107,7 +107,7 @@ namespace WebApi.Controllers
                 throw new ArgumentException("Item wasn't found");
 
             db.Data.Remove(info);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return "Success delete";
         }
     }

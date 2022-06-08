@@ -33,12 +33,12 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("{login}/{pass}")]
-        public string RegisterUser(string? login, string? pass)
+        public async Task<ActionResult<string>> RegisterUser(string? login, string? pass)
         {
             if (CheckCreditinals(login, pass))
             {
                 db.Users.Add(new WebApi.Models.User { UserName = login, Pass=pass});
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return "Success registered";
             }
             return "Something went wrog, try again";
