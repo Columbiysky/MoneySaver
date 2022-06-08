@@ -1,0 +1,3 @@
+﻿namespace MoneySaver.Skia.Gtk
+{
+}
