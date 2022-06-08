@@ -27,7 +27,7 @@ namespace WebApi.Controllers
                 var res = db.Users.Where(predicate: element => element.UserName == login).FirstOrDefault();
                 if (res == null)
                     throw new ArgumentException("No user found with this login.");
-                return "Done";
+                return "Done"; 
             }
             return "Something went wrog, try again";
         }
