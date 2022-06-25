@@ -11,13 +11,4 @@ namespace WebApi.Contexts
         public CategoryContext(DbContextOptions<CategoryContext> options) 
             : base(options) { }
     }
-
-    public class SubCategoryContext : DbContext
-    {
-        public DbSet<SubCategory> SubCategories { get; set; } = null!;
-
-        public SubCategoryContext(DbContextOptions<SubCategoryContext> options) 
-            : base(options) { }
-    }
-
 }
