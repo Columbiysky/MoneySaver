@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 using WebApi.Contexts;
 
@@ -14,47 +15,71 @@ namespace WebApi.Controllers
         {
             this.db = db;
         }
-
-        [HttpGet("{userId}")]
+        
+        /// <summary>
+        /// Returns list of user's categories
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("userId")]
         public List<Category> GetCategories(int userId) =>
             db.Categories.Where(category => category.UserId == userId).ToList();
 
-        [HttpPost("{userId}/{name}")]
-        public async Task<ActionResult<string>> AddCategory(int userId, string? name)
+        /// <summary>
+        /// Adds category for user
+        /// </summary>
+        /// <param name="categoty"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        [HttpPost]
+        public async Task<ActionResult<Category>> AddCategory(Category categoty)
         {
-            if (String.IsNullOrEmpty(name))
-                throw new ArgumentNullException("Category name is empty");
+            if (categoty == null)
+                throw new ArgumentNullException("Category is empty");
 
-            db.Categories.Add(new Category { UserId = userId, Name = name });
+            db.Categories.Add(categoty);
             await db.SaveChangesAsync();
-            return "Category has been added";
+            return Ok(categoty);
         }
 
-        [HttpPut("{categoryId}/{name}")]
-        public async Task<ActionResult<string>> UpdateCategory(int categoryId, string? name)
+        /// <summary>
+        /// Updates category
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        [HttpPut]
+        public async Task<ActionResult<Category>> UpdateCategory(Category category)
         {
-            if (String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(category.Name))
                 throw new ArgumentNullException("Category name is empty");
 
-            var category = db.Categories.FirstOrDefault(category => category.Id == categoryId);
-            if (category == null)
+            var oldCategory = db.Categories.FirstOrDefault(category_ => category_.Id == category.Id);
+            if (oldCategory == null)
                 throw new ArgumentException("Category wasn't found");
 
-            category.Name = name;
-            db.Update(category);
+            oldCategory.Name = category.Name;
+            db.Update(oldCategory);
             await db.SaveChangesAsync();
-            return "Update succesful";
+            return Ok(oldCategory);
         }
 
+        /// <summary>
+        /// Deletes category
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         [HttpDelete("{categoryId}")]
-        public async Task<ActionResult<string>> DeleteCategory(int categoryId)
+        public async Task<ActionResult> DeleteCategory(int categoryId)
         {
             var category = db.Categories.FirstOrDefault(c => c.Id == categoryId);
             if (category == null)
                 throw new ArgumentException("Category wasn't found");
             db.Categories.Remove(category);
             await db.SaveChangesAsync();
-            return "Success delete";
+            return Ok(category);
         }
     }
 
@@ -71,55 +96,80 @@ namespace WebApi.Controllers
             this.dbCategory = db_;
         }
 
+        /// <summary>
+        /// Returns subcategories
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("{userId}")]
         public List<SubCategory> GetSubCategories(int userId)
         {
-            var categoriesIds = dbCategory.Categories.Where(category => category.UserId == userId)
-                                                .Select(category => category.Id).ToList();
+            var categoriesIds = dbCategory.Categories
+                .Where(category => category.UserId == userId)
+                .Select(category => category.Id).ToList();
 
-            return db.SubCategories.Where(subCategory => categoriesIds.Contains( subCategory.LinkedCategoryId)).ToList();
+            return db.SubCategories.Where(subCategory => 
+                categoriesIds.Contains(subCategory.LinkedCategoryId)).ToList();
         }
 
-        [HttpPost("{userId}/{name}/{linkedCategoryId})")]
-        public async Task<ActionResult<string>> AddSubCategory(int userId, string? name, int? linkedCategoryId)
+        /// <summary>
+        /// Adds subcategory
+        /// </summary>
+        /// <param name="subCategory"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        [HttpPost]
+        public async Task<ActionResult<SubCategory>> AddSubCategory(SubCategory subCategory)
         {
-            if (linkedCategoryId == null)
-            {
-                return "Linked category field is empty";
-            }
+            if (subCategory.LinkedCategoryId == null)
+                throw new ArgumentNullException("Linked oldCategory field is empty");
+
             else
             {
-                if (String.IsNullOrEmpty(name))
+                if (String.IsNullOrEmpty(subCategory.Name))
                     throw new ArgumentNullException("Subcategory name is empty");
 
                 db.SubCategories.Add(new SubCategory
                 {
-                    Name = name,
-                    LinkedCategoryId = linkedCategoryId
+                    Name = subCategory.Name,
+                    LinkedCategoryId = subCategory.LinkedCategoryId
                 });
                 await db.SaveChangesAsync();
-                return "Subcategory has been added";
+                return Ok(subCategory);
             }
         }
 
-        [HttpPut("{subcategoryId}/{name}")]
-        public async Task<ActionResult<string>> UpdateSubCategory(int subcategoryId, string name)
+        /// <summary>
+        /// Updates subcategory
+        /// </summary>
+        /// <param name="subCategory"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        [HttpPut]
+        public async Task<ActionResult<SubCategory>> UpdateSubCategory(SubCategory subCategory)
         {
-            if(string.IsNullOrEmpty(name))
+            if(string.IsNullOrEmpty(subCategory.Name))
                 throw new ArgumentNullException("Name is empty");
 
-            var subcategory = db.SubCategories.FirstOrDefault(subcat => subcat.Id == subcategoryId);
-            if (subcategory == null)
+            var oldSubCategory = db.SubCategories.FirstOrDefault(subcat => subcat.Id == subCategory.Id);
+            if (oldSubCategory == null)
                 throw new ArgumentException("Subcategory wasn't found");
 
-            subcategory.Name = name;
-            db.Update(subcategory);
+            oldSubCategory.Name = subCategory.Name;
+            db.Update(oldSubCategory);
             await db.SaveChangesAsync();
-            return "Subcategory updated succesfully";
+            return Ok(oldSubCategory);
         }
 
+        /// <summary>
+        /// Deletes subcategory
+        /// </summary>
+        /// <param name="subcategoryId"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         [HttpDelete("{subcategoryId}")]
-        public async Task<ActionResult<string>> DeleteSubCategory(int subcategoryId)
+        public async Task<ActionResult<SubCategory>> DeleteSubCategory(int subcategoryId)
         {
             var subCategory = db.SubCategories.FirstOrDefault(subcat => subcat.Id == subcategoryId);
             if (subCategory == null)
@@ -127,7 +177,7 @@ namespace WebApi.Controllers
 
             db.SubCategories.Remove(subCategory);
             await db.SaveChangesAsync();
-            return "Delete successful";
+            return Ok(subCategory);
         }
     }
 }

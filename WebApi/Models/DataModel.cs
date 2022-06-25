@@ -1,4 +1,5 @@
-﻿namespace WebApi.Models
+﻿#pragma warning disable CS1591
+namespace WebApi.Models
 {
     public interface IData
     {
@@ -9,7 +10,7 @@
         int CurrencyId { get; set; }
         decimal Summ { get; set; }
         int? SubCategoryId { get; set; }
-        string Comment { get; set; }
+        string? Comment { get; set; }
     }
     public class DataModel : IData
     {
@@ -20,6 +21,6 @@
         public int CurrencyId { get; set; }
         public decimal Summ { get; set; }
         public int? SubCategoryId { get; set; }
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
     }
 }

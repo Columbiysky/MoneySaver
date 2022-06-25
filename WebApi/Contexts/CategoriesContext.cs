@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#pragma warning disable CS1591
+using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
 
 namespace WebApi.Contexts
@@ -7,20 +8,16 @@ namespace WebApi.Contexts
     {
         public DbSet<Category> Categories { get; set; } = null!;
 
-        public CategoryContext(DbContextOptions<CategoryContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
+        public CategoryContext(DbContextOptions<CategoryContext> options) 
+            : base(options) { }
     }
 
     public class SubCategoryContext : DbContext
     {
         public DbSet<SubCategory> SubCategories { get; set; } = null!;
 
-        public SubCategoryContext(DbContextOptions<SubCategoryContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
+        public SubCategoryContext(DbContextOptions<SubCategoryContext> options) 
+            : base(options) { }
     }
 
 }

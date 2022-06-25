@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#pragma warning disable CS1591
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 using WebApi.Contexts;
 
@@ -18,88 +19,45 @@ namespace WebApi.Controllers
         public List<DataModel> GetData(int userId) =>
             db.Data.Where(info => info.UserId == userId).ToList();
 
-        [HttpPost("{userId}/{dateTime}/{categoryId}/" +
-            "{currencyId}/{summ}/{comment}")]
-        public async Task<ActionResult<string>> InsertData(int userId, string dateTime, int categoryId,
-                                int currencyId, decimal summ, string comment)
+        [HttpPost]
+        public async Task<ActionResult<DataModel>> InsertData([FromQuery] DataModel dataModel)
         {
             db.Data.Add(new DataModel
             {
-                UserId = userId,
-                CategoryId = categoryId,
-                CurrencyId = currencyId,
-                DateTimeOfPurchace = DateTime.Parse(dateTime),
-                Summ = summ,
-                Comment = comment
-            });
-            await db.SaveChangesAsync();
-            return "Succesfully added";
-        }
-
-        [HttpPost("{userId}/{dateTime}/{categoryId}/{subCategoryId}/" +
-            "{currencyId}/{summ}/{comment}")]
-        public async Task<ActionResult<string>> InsertData(int userId, string dateTime, int categoryId, int subCategoryId,
-                                int currencyId, decimal summ, string comment)
-        {
-            db.Data.Add(new DataModel
-            {
-                UserId = userId,
-                CategoryId = categoryId,
-                SubCategoryId = subCategoryId,
-                CurrencyId = currencyId,
-                DateTimeOfPurchace = DateTime.Parse(dateTime),
-                Summ = summ,
-                Comment = comment
+                UserId = dataModel.UserId,
+                CategoryId = dataModel.CategoryId,
+                SubCategoryId = dataModel.SubCategoryId,
+                CurrencyId = dataModel.CurrencyId,
+                DateTimeOfPurchace = dataModel.DateTimeOfPurchace,
+                Summ = dataModel.Summ,
+                Comment = dataModel.Comment
             }) ;
             await db.SaveChangesAsync();
-            return "Succesfully added";
+            return Ok(dataModel);
         }
 
-        [HttpPut("{id}/{dateTime}/{categoryId}/" +
-            "{currencyId}/{summ}/{comment}")]
-        public async Task<ActionResult<string>> UpdateData(int id, DateTime dateTime, int categoryId,
-                                int currencyId, decimal summ, string comment)
+        [HttpPut]
+        public async Task<ActionResult<DataModel>> UpdateData([FromQuery] DataModel dataModel)
         {
-            var info = db.Data.FirstOrDefault(i => i.Id == id);
-
-            if (info == null)
-                throw new ArgumentException("Item wasn't found");
-            
-            info.CategoryId = categoryId;
-            info.DateTimeOfPurchace = dateTime;
-            info.Summ = summ;
-            info.Comment = comment;
-            info.CurrencyId = currencyId;
-
-            db.Update(info);
-            await db.SaveChangesAsync();
-            return "Update succesful";
-        }
-
-        [HttpPut("{id}/{dateTime}/{categoryId}/{subCategoryId}/" +
-            "{currencyId}/{summ}/{comment}")]
-        public async Task<ActionResult<string>> UpdateData(int id, DateTime dateTime, int categoryId, int subCategoryId,
-                                int currencyId, decimal summ, string comment)
-        {
-            var info = db.Data.FirstOrDefault(i => i.Id == id);
+            var info = db.Data.FirstOrDefault(i => i.Id == dataModel.Id);
 
             if (info == null)
                 throw new ArgumentException("Item wasn't found");
 
-            info.CategoryId = categoryId;
-            info.SubCategoryId = subCategoryId;
-            info.DateTimeOfPurchace = dateTime;
-            info.Summ = summ;
-            info.Comment = comment;
-            info.CurrencyId = currencyId;
+            info.CategoryId = dataModel.CategoryId;
+            info.SubCategoryId = dataModel.SubCategoryId;
+            info.DateTimeOfPurchace = dataModel.DateTimeOfPurchace;
+            info.Summ = dataModel.Summ;
+            info.Comment = dataModel.Comment;
+            info.CurrencyId = dataModel.CurrencyId;
 
             db.Update(info);
             await db.SaveChangesAsync();
-            return "Update succesful";
+            return Ok(info);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<string>> DeleteData(int id)
+        public async Task<ActionResult<DataModel>> DeleteData(int id)
         {
             var info = db.Data.FirstOrDefault(i => i.Id == id);
 
@@ -108,7 +66,7 @@ namespace WebApi.Controllers
 
             db.Data.Remove(info);
             await db.SaveChangesAsync();
-            return "Success delete";
+            return Ok(info);
         }
     }
 }

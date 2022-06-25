@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#pragma warning disable CS1591
+using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
 
 namespace WebApi.Contexts
@@ -7,9 +8,6 @@ namespace WebApi.Contexts
     {
         public DbSet<User> Users { get; set; } = null!;
 
-        public UserContext(DbContextOptions<UserContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
+        public UserContext(DbContextOptions<UserContext> options) : base(options) { }
     }
 }
