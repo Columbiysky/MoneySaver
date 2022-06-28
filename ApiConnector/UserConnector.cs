@@ -22,14 +22,14 @@ namespace ApiConnector
             }
         }
 
-        public static List<User> GetAllClients(string path)
-        {
-            return JsonConvert.DeserializeObject<List<User>>(GetAllClientsString(path));
-        }
+        public static List<User> GetAllClients(string path) => 
+            JsonConvert.DeserializeObject<List<User>>(GetAllClientsString(path)) ?? 
+                throw new Exception("Something went wrong");
 
-        public static string GetAllClientsString(string path) => JsonPrettify(client.GetAsync(path)
-                                                                        .Result.Content
-                                                                        .ReadAsStringAsync()
-                                                                        .Result);
+        public static string GetAllClientsString(string path) => 
+            JsonPrettify(client.GetAsync(path)
+                .Result.Content
+                .ReadAsStringAsync()
+                .Result);
     }
 }
