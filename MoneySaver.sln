@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apps.Windows", "Apps\Apps.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiConnector", "ApiConnector\ApiConnector.csproj", "{33CE0892-8942-4FF0-8CAD-87BDB670023F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnector", "TestConnector\TestConnector.csproj", "{C76BE88A-C68B-47E3-A768-AB62EDBCF0E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConnector", "TestConnector\TestConnector.csproj", "{C76BE88A-C68B-47E3-A768-AB62EDBCF0E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

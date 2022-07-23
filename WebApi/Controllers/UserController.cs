@@ -52,7 +52,7 @@ namespace WebApi.Controllers
         /// <returns>Info is registration completed succesful or not</returns>
         /// <exception cref="ArgumentException"></exception>
         [HttpPost]
-        public async Task<ActionResult<User>> RegisterUser([FromQuery] User user)
+        public async Task<ActionResult<User>> RegisterUser([FromBody] User user)
         {
             if (CheckCreditinals(user))
             {
@@ -74,13 +74,12 @@ namespace WebApi.Controllers
         /// <returns>Info was update succesful or not</returns>
         /// <exception cref="ArgumentException"></exception>
         [HttpPut]
-        public async Task<ActionResult<User>> UpdateUser([FromQuery] User user)
+        public async Task<ActionResult<User>> UpdateUser([FromBody] User user)
         {
             if (CheckCreditinals(user))
             {
-                if (db.Users.FirstOrDefault(u => u.Login == user.Login) != null)
-                    throw new ArgumentException("This login is used already");
-                var oldUser = db.Users.FirstOrDefault(user_ => user_.Id == user.Id);
+                var oldUser = db.Users.FirstOrDefault(user_ => user_.Id == user.Id 
+                    || user_.Login == user.Login);
                 if (oldUser == null)
                     throw new ArgumentException("User wasn't found");
                 oldUser.Login = user.Login;
