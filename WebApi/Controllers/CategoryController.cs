@@ -15,7 +15,7 @@ namespace WebApi.Controllers
         {
             this.db = db;
         }
-        
+
         /// <summary>
         /// Returns list of user's categories
         /// </summary>
@@ -32,7 +32,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         [HttpPost]
-        public async Task<ActionResult<Category>> AddCategory(Category categoty)
+        public async Task<ActionResult<Category>> AddCategory([FromBody] Category categoty)
         {
             if (categoty == null)
                 throw new ArgumentNullException("Category is empty");
@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
         [HttpPut]
-        public async Task<ActionResult<Category>> UpdateCategory(Category category)
+        public async Task<ActionResult<Category>> UpdateCategory([FromBody] Category category)
         {
             if (String.IsNullOrEmpty(category.Name))
                 throw new ArgumentNullException("Category name is empty");
