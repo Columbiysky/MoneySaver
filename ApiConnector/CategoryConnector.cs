@@ -23,7 +23,6 @@ namespace ApiConnector
         public static HttpResponseMessage DeleteCategory(string path) =>
              client.DeleteAsync(path).GetAwaiter().GetResult();
 
-
         private static StringContent GetStringContentFromCategory(Category category) =>
             new StringContent(JsonConvert.SerializeObject(category),
                     Encoding.UTF8,
