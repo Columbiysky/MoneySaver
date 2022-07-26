@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Apps.Skia.Gtk": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7935;http://localhost:7936"
+    }
+  }
+}

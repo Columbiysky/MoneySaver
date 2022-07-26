@@ -39,7 +39,7 @@ public class SubCategoryController : ControllerBase
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
     [HttpPost]
-    public async Task<ActionResult<SubCategory>> AddSubCategory(SubCategory subCategory)
+    public async Task<ActionResult<SubCategory>> AddSubCategory([FromBody] SubCategory subCategory)
     {
         if (subCategory.LinkedCategoryId == null)
             throw new ArgumentNullException("Linked oldCategory field is empty");
@@ -48,11 +48,7 @@ public class SubCategoryController : ControllerBase
             if (String.IsNullOrEmpty(subCategory.Name))
                 throw new ArgumentNullException("Subcategory name is empty");
 
-            db.SubCategories.Add(new SubCategory
-            {
-                Name = subCategory.Name,
-                LinkedCategoryId = subCategory.LinkedCategoryId
-            });
+            db.SubCategories.Add(subCategory);
             await db.SaveChangesAsync();
             return Ok(subCategory);
         }
@@ -66,7 +62,7 @@ public class SubCategoryController : ControllerBase
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="ArgumentException"></exception>
     [HttpPut]
-    public async Task<ActionResult<SubCategory>> UpdateSubCategory(SubCategory subCategory)
+    public async Task<ActionResult<SubCategory>> UpdateSubCategory([FromBody] SubCategory subCategory)
     {
         if (string.IsNullOrEmpty(subCategory.Name))
             throw new ArgumentNullException("Name is empty");
@@ -76,6 +72,7 @@ public class SubCategoryController : ControllerBase
             throw new ArgumentException("Subcategory wasn't found");
 
         oldSubCategory.Name = subCategory.Name;
+        oldSubCategory.LinkedCategoryId = subCategory.LinkedCategoryId;
         db.Update(oldSubCategory);
         await db.SaveChangesAsync();
         return Ok(oldSubCategory);

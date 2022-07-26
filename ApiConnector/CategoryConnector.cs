@@ -13,18 +13,18 @@ namespace ApiConnector
                 (client.GetAsync(path).Result.Content.ReadAsStringAsync().Result);
 
         public static Category CreateCategory(string path, Category category) =>
-                        Task.FromResult(GetCategoryInstanceFromResponse(client.PostAsync(path,
-                GetStringContentFromCategoty(category)).GetAwaiter().GetResult()).Result).Result;
+            Task.FromResult(GetCategoryInstanceFromResponse(client.PostAsync(path,
+                GetStringContentFromCategory(category)).GetAwaiter().GetResult()).Result).Result;
 
         public static Category UpdateCategory(string path, Category category) =>
-                        Task.FromResult(GetCategoryInstanceFromResponse(client.PutAsync(path,
-                GetStringContentFromCategoty(category)).GetAwaiter().GetResult()).Result).Result;
+            Task.FromResult(GetCategoryInstanceFromResponse(client.PutAsync(path,
+                GetStringContentFromCategory(category)).GetAwaiter().GetResult()).Result).Result;
 
         public static HttpResponseMessage DeleteCategory(string path) =>
              client.DeleteAsync(path).GetAwaiter().GetResult();
 
 
-        private static StringContent GetStringContentFromCategoty(Category category) =>
+        private static StringContent GetStringContentFromCategory(Category category) =>
             new StringContent(JsonConvert.SerializeObject(category),
                     Encoding.UTF8,
                     "application/json");
