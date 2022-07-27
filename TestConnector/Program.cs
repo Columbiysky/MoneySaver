@@ -22,15 +22,47 @@
 //var deletedCategory = ApiConnector.CategoryConnector.DeleteCategory($"https://localhost:5001/Category/{updatedCategory.Id}");
 //Console.WriteLine("DeleteCategory finished");
 
-var resSubC = ApiConnector.SubCategoryConnector.GetSubCategories("https://localhost:5001/SubCategory/5");
-Console.WriteLine("GetSubCategories finished");
+//var resSubC = ApiConnector.SubCategoryConnector.GetSubCategories("https://localhost:5001/SubCategory/5");
+//Console.WriteLine("GetSubCategories finished");
 
-var newSubC = ApiConnector.SubCategoryConnector.CreateSubCategory("https://localhost:5001/SubCategory/", new WebApi.Models.SubCategory { LinkedCategoryId = 4, Name = "subC conn test"});
-Console.WriteLine("GetSubCategories finished");
+//var newSubC = ApiConnector.SubCategoryConnector.CreateSubCategory("https://localhost:5001/SubCategory/", new WebApi.Models.SubCategory { LinkedCategoryId = 4, Name = "subC conn test"});
+//Console.WriteLine("GetSubCategories finished");
 
-newSubC = ApiConnector.SubCategoryConnector.UpdateSubCategory("https://localhost:5001/SubCategory/", new WebApi.Models.SubCategory { Id= newSubC.Id, LinkedCategoryId = 2, Name = "UPD subC conn test" });
-Console.WriteLine("GetSubCategories finished");
+//newSubC = ApiConnector.SubCategoryConnector.UpdateSubCategory("https://localhost:5001/SubCategory/", new WebApi.Models.SubCategory { Id= newSubC.Id, LinkedCategoryId = 2, Name = "UPD subC conn test" });
+//Console.WriteLine("GetSubCategories finished");
 
-var resp = ApiConnector.SubCategoryConnector.DeleteSubCategory($"https://localhost:5001/SubCategory/{newSubC.Id}");
-Console.WriteLine("GetSubCategories finished");
+//var resp = ApiConnector.SubCategoryConnector.DeleteSubCategory($"https://localhost:5001/SubCategory/{newSubC.Id}");
+//Console.WriteLine("GetSubCategories finished");
 
+
+//var resData = ApiConnector.DataConnector.GetData("https://localhost:5001/Data/1");
+//Console.WriteLine("GetData finished");
+
+//var newData = ApiConnector.DataConnector.CreateData("https://localhost:5001/Data/",
+//    new WebApi.Models.DataModel
+//    {
+//        UserId = 1,
+//        DateTimeOfPurchace = DateTime.Now,
+//        CategoryId = 1,
+//        CurrencyId = 1,
+//        Summ = 100,
+//        SubCategoryId = 1,
+//        Comment = "create test"
+//    });
+//Console.WriteLine("CreateData finished");
+
+//newData = ApiConnector.DataConnector.UpdateData("https://localhost:5001/Data/",
+//    new WebApi.Models.DataModel
+//    {
+//        Id = newData.Id,
+//        UserId = 2,
+//        DateTimeOfPurchace = DateTime.Now,
+//        CategoryId = 2,
+//        CurrencyId = 2,
+//        Summ = 200,
+//        SubCategoryId = 2,
+//        Comment = "UPD create test"
+//    });
+//Console.WriteLine("UpdateData finished");
+
+//var resp = ApiConnector.DataConnector.DeleteData($"https://localhost:5001/Data/{newData.Id}");

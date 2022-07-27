@@ -28,18 +28,18 @@ namespace WebApi.Controllers
         /// <summary>
         /// Adds category for user
         /// </summary>
-        /// <param name="categoty"></param>
+        /// <param name="category"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         [HttpPost]
-        public async Task<ActionResult<Category>> AddCategory([FromBody] Category categoty)
+        public async Task<ActionResult<Category>> AddCategory([FromBody] Category category)
         {
-            if (categoty == null)
+            if (category == null)
                 throw new ArgumentNullException("Category is empty");
 
-            db.Categories.Add(categoty);
+            db.Categories.Add(category);
             await db.SaveChangesAsync();
-            return Ok(categoty);
+            return Ok(category);
         }
 
         /// <summary>
