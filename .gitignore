@@ -44,4 +44,4 @@ Ankh.NoLoad
 # exclude some xmls 
 !AndroidManifest.xml
 !LinkerConfig.xml
-!MoneySaver/MoneySaver.Mobile/obj
+!obj
