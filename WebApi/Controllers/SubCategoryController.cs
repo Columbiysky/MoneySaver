@@ -1,7 +1,7 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Contexts;
-using WebApi.Models;
+using Models;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
+using Models;
 using WebApi.Contexts;
 
 namespace WebApi.Controllers
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
         {
             if (CheckCreditinals(user))
             {
-                db.Users.Add(new WebApi.Models.User
+                db.Users.Add(new Models.User
                 {
                     Login = user.Login,
                     Pass = user.Pass

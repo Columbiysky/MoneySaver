@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
-using WebApi.Models;
+using Models;
 
 namespace ApiConnector
 {

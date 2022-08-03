@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
+using Models;
 using WebApi.Contexts;
 
 namespace WebApi.Controllers

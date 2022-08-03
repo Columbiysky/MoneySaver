@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
-using WebApi.Models;
+using Models;
 using Formatting = Newtonsoft.Json.Formatting;
 
 namespace ApiConnector

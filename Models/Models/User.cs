@@ -1,5 +1,5 @@
 ﻿#pragma warning disable CS1591
-namespace WebApi.Models
+namespace Models
 {
     public interface IUser
     {

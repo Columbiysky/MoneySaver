@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS1591
 using Microsoft.EntityFrameworkCore;
-using WebApi.Models;
+using Models;
 
 namespace WebApi.Contexts
 {

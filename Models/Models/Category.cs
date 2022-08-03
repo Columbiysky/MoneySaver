@@ -1,17 +1,17 @@
 ﻿#pragma warning disable CS1591
-namespace WebApi.Models
+namespace Models
 {
-    public interface ISubCategory
+    public interface ICategory
     {
         int? Id { get; set; }
-        int? LinkedCategoryId { get; set; }
+        int UserId { get; set; }
         string? Name { get; set; }
     }
 
-    public class SubCategory : ISubCategory
+    public class Category : ICategory
     {
-        public int? LinkedCategoryId { get; set; }
         public int? Id { get; set; }
+        public int UserId { get; set; }
         public string? Name { get; set; }
     }
 }
