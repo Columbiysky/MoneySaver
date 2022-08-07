@@ -40,10 +40,10 @@ pool:
 #     artifact_folder: $(artifact_windows_folder)
 #     application_package: $(windows_application_package)
     
- variables:
-   solution: '**/*.sln'
-   buildPlatform: 'Any CPU'
-   buildConfiguration: 'Release'
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
 steps:
 
