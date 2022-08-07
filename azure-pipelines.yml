@@ -9,62 +9,62 @@ trigger:
 #       ref: refs/tags/v0.3.0
 #       endpoint: github_connection
   
-variables:
-  - group: 'Uno Build Variables'
-  - group: 'Common Build Variables'
-  - group: 'MoneySaver Build Variables'
-  # - name: ios_enabled
-  #   value: 'true'
-  - name: windows_enabled
-    value: 'true'
-  # - name: android_enabled
-  #   value: 'true'
+# variables:
+#   - group: 'Uno Build Variables'
+#   - group: 'Common Build Variables'
+#   - group: 'MoneySaver Build Variables'
+#   # - name: ios_enabled
+#   #   value: 'true'
+#   - name: windows_enabled
+#     value: 'true'
+#   # - name: android_enabled
+#   #   value: 'true'
 
 pool:
   vmImage: 'windows-latest'
 
-stages:
-  parameters:
-    # Stage name and whether it's enabled
-    stage_name: 'Build_Windows'
-    build_windows_enabled: $(windows_enabled)
-    # Version information
-    full_version_number: '$(version_prefix).$(Build.BuildId)'
-    # Signing information
-    windows_cert_securefiles_filename: '$(windows_signing_certificate_securefiles_filename)'
-    windows_cert_password: '$(windows_signing_certificate_password)'
-    # Solution to build
-    solution_filename: $(solution_file)
-    solution_build_configuration: $(solution_build_config)
-    # Output information
-    artifact_folder: $(artifact_windows_folder)
-    application_package: $(windows_application_package)
+# stages:
+#   parameters:
+#     # Stage name and whether it's enabled
+#     stage_name: 'Build_Windows'
+#     build_windows_enabled: $(windows_enabled)
+#     # Version information
+#     full_version_number: '$(version_prefix).$(Build.BuildId)'
+#     # Signing information
+#     windows_cert_securefiles_filename: '$(windows_signing_certificate_securefiles_filename)'
+#     windows_cert_password: '$(windows_signing_certificate_password)'
+#     # Solution to build
+#     solution_filename: $(solution_file)
+#     solution_build_configuration: $(solution_build_config)
+#     # Output information
+#     artifact_folder: $(artifact_windows_folder)
+#     application_package: $(windows_application_package)
     
 # variables:
 #   solution: '**/*.sln'
 #   buildPlatform: 'Any CPU'
 #   buildConfiguration: 'Release'
 
-# steps:
+steps:
 
-# - task: CmdLine@2
-#   inputs:
-#     script: 'dotnet workload install android ios macos maccatalyst'
+- task: CmdLine@2
+  inputs:
+    script: 'dotnet workload install android ios macos maccatalyst'
 
-# - task: NuGetToolInstaller@1
+- task: NuGetToolInstaller@1
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
 
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
-# - task: VSTest@2
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
