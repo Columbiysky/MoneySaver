@@ -47,12 +47,12 @@ pool:
 
 steps:
 
-- task: UseDotNet@2
-  displayName: 'Install dotnet 6 preview'
-  inputs:
-    packageType: sdk
-    version: 6.0.4xx
-    installationPath: $(Agent.ToolsDirectory)/dotnet
+#- task: UseDotNet@2
+#  displayName: 'Install dotnet 6 preview'
+#  inputs:
+#    packageType: sdk
+#    version: 6.0.4xx
+#    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: CmdLine@2
   inputs:
