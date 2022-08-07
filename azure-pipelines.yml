@@ -1,13 +1,13 @@
 trigger:
 - main
 
-resources:
-  repositories:
-    - repository: builttoroam_templates
-      type: github
-      name: builttoroam/pipeline_templates
-      ref: refs/tags/v0.3.0
-      endpoint: github_connection
+# resources:
+#   repositories:
+#     - repository: builttoroam_templates
+#       type: github
+#       name: builttoroam/pipeline_templates
+#       ref: refs/tags/v0.3.0
+#       endpoint: github_connection
   
 variables:
   - group: 'Uno Build Variables'
