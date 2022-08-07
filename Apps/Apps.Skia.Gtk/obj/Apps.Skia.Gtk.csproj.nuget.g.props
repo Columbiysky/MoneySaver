@@ -5,19 +5,18 @@
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Columbiysky\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Admin\.nuget\packages\</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.3.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Columbiysky\.nuget\packages\" />
-    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+    <SourceRoot Include="C:\Users\Admin\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)uno.winui.skia.gtk\4.4.13\build\Uno.WinUI.Skia.Gtk.props" Condition="Exists('$(NuGetPackageRoot)uno.winui.skia.gtk\4.4.13\build\Uno.WinUI.Skia.Gtk.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgUno_WinUI Condition=" '$(PkgUno_WinUI)' == '' ">C:\Users\Columbiysky\.nuget\packages\uno.winui\4.4.13</PkgUno_WinUI>
-    <PkgUno_WinUI_RemoteControl Condition=" '$(PkgUno_WinUI_RemoteControl)' == '' ">C:\Users\Columbiysky\.nuget\packages\uno.winui.remotecontrol\4.4.13</PkgUno_WinUI_RemoteControl>
+    <PkgUno_WinUI Condition=" '$(PkgUno_WinUI)' == '' ">C:\Users\Admin\.nuget\packages\uno.winui\4.4.13</PkgUno_WinUI>
+    <PkgUno_WinUI_RemoteControl Condition=" '$(PkgUno_WinUI_RemoteControl)' == '' ">C:\Users\Admin\.nuget\packages\uno.winui.remotecontrol\4.4.13</PkgUno_WinUI_RemoteControl>
   </PropertyGroup>
 </Project>

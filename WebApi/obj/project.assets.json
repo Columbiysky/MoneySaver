@@ -1343,33 +1343,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Columbiysky\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\repos\\MoneySaver\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\Columbiysky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\WebApi\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\repos\\MoneySaver\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\repos\\MoneySaver\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\NuGet.Config",
-        "C:\\Users\\Columbiysky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Admin\\repos\\MoneySaver\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://pkgs.dev.azure.com/azure-public/vside/_packaging/xamarin-impl/nuget/v3/index.json": {},
         "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-public/nuget/v3/index.json": {},
@@ -1379,8 +1371,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\Models\\Models.csproj": {
-              "projectPath": "C:\\Users\\Columbiysky\\source\\repos\\MoneySaver\\Models\\Models.csproj"
+            "C:\\Users\\Admin\\repos\\MoneySaver\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\Admin\\repos\\MoneySaver\\Models\\Models.csproj"
             }
           }
         }
@@ -1437,7 +1429,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400-preview.22330.6\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
