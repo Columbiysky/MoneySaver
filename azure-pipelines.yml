@@ -24,7 +24,6 @@ pool:
   vmImage: 'windows-latest'
 
 stages:
-- template:  azure/mobile/build-xamarin-windows.yml@builttoroam_templates
   parameters:
     # Stage name and whether it's enabled
     stage_name: 'Build_Windows'
