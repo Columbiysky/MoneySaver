@@ -47,6 +47,13 @@ pool:
 
 steps:
 
+- task: UseDotNet@2
+  displayName: 'Install dotnet 6 preview'
+  inputs:
+    packageType: sdk
+    version: 6.0.400-preview.22330.6
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
 - task: CmdLine@2
   inputs:
     script: 'dotnet workload install android ios macos maccatalyst'
