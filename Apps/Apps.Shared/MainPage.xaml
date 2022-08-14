@@ -17,6 +17,6 @@
         </Grid.RowDefinitions>
         <TextBox PlaceholderText = "Login" Width="300" Margin="20" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <PasswordBox PlaceholderText = "Password" Width="300" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="button" Content="Button" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button x:Name="loginButton" Content="Sign In" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="50" Width="300" Click="loginButton_Click"/>
     </Grid>
 </Page>

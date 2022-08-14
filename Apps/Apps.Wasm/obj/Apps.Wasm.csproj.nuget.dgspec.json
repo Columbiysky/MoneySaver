@@ -58,7 +58,7 @@
             },
             "Microsoft.Windows.Compatibility": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[6.0.0, )"
             },
             "Uno.Extensions.Logging.WebAssembly.Console": {
               "target": "Package",

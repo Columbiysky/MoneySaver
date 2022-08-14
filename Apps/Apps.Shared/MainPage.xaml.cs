@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -22,9 +23,24 @@ namespace Apps
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        MainPage m_page;
         public MainPage()
         {
             this.InitializeComponent();
+            m_page = this;
+        }
+
+        private async void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog noWifiDialog = new ContentDialog
+            {
+                Title = "No wifi connection",
+                Content = "Check your connection and try again.",
+                XamlRoot = this.XamlRoot,
+                CloseButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await noWifiDialog.ShowAsync();
         }
     }
 }
