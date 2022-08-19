@@ -1,44 +1,8 @@
 trigger:
 - main
 
-# resources:
-#   repositories:
-#     - repository: builttoroam_templates
-#       type: github
-#       name: builttoroam/pipeline_templates
-#       ref: refs/tags/v0.3.0
-#       endpoint: github_connection
-  
-# variables:
-#   - group: 'Uno Build Variables'
-#   - group: 'Common Build Variables'
-#   - group: 'MoneySaver Build Variables'
-#   # - name: ios_enabled
-#   #   value: 'true'
-#   - name: windows_enabled
-#     value: 'true'
-#   # - name: android_enabled
-#   #   value: 'true'
-
 pool:
   vmImage: 'windows-latest'
-
-# stages:
-#   parameters:
-#     # Stage name and whether it's enabled
-#     stage_name: 'Build_Windows'
-#     build_windows_enabled: $(windows_enabled)
-#     # Version information
-#     full_version_number: '$(version_prefix).$(Build.BuildId)'
-#     # Signing information
-#     windows_cert_securefiles_filename: '$(windows_signing_certificate_securefiles_filename)'
-#     windows_cert_password: '$(windows_signing_certificate_password)'
-#     # Solution to build
-#     solution_filename: $(solution_file)
-#     solution_build_configuration: $(solution_build_config)
-#     # Output information
-#     artifact_folder: $(artifact_windows_folder)
-#     application_package: $(windows_application_package)
     
 variables:
   solution: '**/*.sln'
@@ -46,19 +10,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
-#- task: UseDotNet@2
-#  displayName: 'Install dotnet 6 preview'
-#  inputs:
-#    packageType: sdk
-#    version: 6.0.4xx
-#    installationPath: $(Agent.ToolsDirectory)/dotnet
-
-- task: CmdLine@2
-  inputs:
-    script: 'dotnet workload install android ios macos maccatalyst'
-
-- task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
